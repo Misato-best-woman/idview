@@ -22,6 +22,7 @@ namespace IdView
         private void Form1_Load(object sender, EventArgs e)
         {
             descriptBox.Text = string.Concat(Enumerable.Repeat(description, 8));
+            categoryName.Text = description;
         }
 
         private void descriptBox_Load(object sender, EventArgs e)
@@ -32,12 +33,15 @@ namespace IdView
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            if (descriptBox.Text.Length != 1)
+            {
+                descriptBox.Text = descriptBox.Text.Substring(0, descriptBox.Text.Length / 2);
+            }            
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            descriptBox.Text = string.Concat(Enumerable.Repeat(descriptBox.Text, 2));
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -48,6 +52,16 @@ namespace IdView
         private void label1_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void categoryName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void descriptBox_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -36,12 +36,14 @@
             this.ideaImage = new System.Windows.Forms.PictureBox();
             this.categoryName = new System.Windows.Forms.Label();
             this.descriptBox = new System.Windows.Forms.Label();
+            this.isDone = new System.Windows.Forms.CheckBox();
             this.attrBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ideaImage)).BeginInit();
             this.SuspendLayout();
             // 
             // attrBox
             // 
+            this.attrBox.Controls.Add(this.isDone);
             this.attrBox.Controls.Add(this.descriptBox);
             this.attrBox.Controls.Add(this.categoryName);
             this.attrBox.Controls.Add(this.categoryLabel);
@@ -55,17 +57,18 @@
             // categoryLabel
             // 
             this.categoryLabel.AutoSize = true;
-            this.categoryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.categoryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.categoryLabel.Location = new System.Drawing.Point(6, 271);
             this.categoryLabel.Name = "categoryLabel";
-            this.categoryLabel.Size = new System.Drawing.Size(61, 13);
+            this.categoryLabel.Size = new System.Drawing.Size(86, 20);
             this.categoryLabel.TabIndex = 0;
             this.categoryLabel.Text = "Category:";
             this.categoryLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(463, 351);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(406, 351);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(155, 73);
             this.button1.TabIndex = 2;
@@ -75,6 +78,7 @@
             // 
             // button2
             // 
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(633, 351);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(155, 73);
@@ -87,9 +91,9 @@
             // 
             this.ideaImage.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ideaImage.Image = ((System.Drawing.Image)(resources.GetObject("ideaImage.Image")));
-            this.ideaImage.Location = new System.Drawing.Point(12, 32);
+            this.ideaImage.Location = new System.Drawing.Point(12, 12);
             this.ideaImage.Name = "ideaImage";
-            this.ideaImage.Size = new System.Drawing.Size(388, 392);
+            this.ideaImage.Size = new System.Drawing.Size(383, 412);
             this.ideaImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ideaImage.TabIndex = 4;
             this.ideaImage.TabStop = false;
@@ -98,9 +102,10 @@
             // categoryName
             // 
             this.categoryName.AutoSize = true;
-            this.categoryName.Location = new System.Drawing.Point(70, 271);
+            this.categoryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.categoryName.Location = new System.Drawing.Point(85, 271);
             this.categoryName.Name = "categoryName";
-            this.categoryName.Size = new System.Drawing.Size(35, 13);
+            this.categoryName.Size = new System.Drawing.Size(51, 20);
             this.categoryName.TabIndex = 3;
             this.categoryName.Text = "label1";
             this.categoryName.Click += new System.EventHandler(this.categoryName_Click);
@@ -108,12 +113,26 @@
             // descriptBox
             // 
             this.descriptBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.descriptBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.descriptBox.Location = new System.Drawing.Point(9, 20);
             this.descriptBox.Name = "descriptBox";
             this.descriptBox.Size = new System.Drawing.Size(365, 240);
             this.descriptBox.TabIndex = 4;
             this.descriptBox.Text = "label1";
             this.descriptBox.Click += new System.EventHandler(this.descriptBox_Click);
+            // 
+            // isDone
+            // 
+            this.isDone.AutoSize = true;
+            this.isDone.BackColor = System.Drawing.SystemColors.Control;
+            this.isDone.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.isDone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.isDone.Location = new System.Drawing.Point(293, 270);
+            this.isDone.Name = "isDone";
+            this.isDone.Size = new System.Drawing.Size(71, 24);
+            this.isDone.TabIndex = 5;
+            this.isDone.Text = "Done";
+            this.isDone.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 
@@ -143,6 +162,7 @@
         private System.Windows.Forms.Label categoryLabel;
         private System.Windows.Forms.Label categoryName;
         private System.Windows.Forms.Label descriptBox;
+        private System.Windows.Forms.CheckBox isDone;
     }
 }
 

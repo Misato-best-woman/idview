@@ -6,18 +6,16 @@ using System.Threading.Tasks;
 
 namespace IdView
 {
-    public struct Entry
-    {
-        public string id;
-        public string blob;
+    public class Entry
+    {        
+        public string path;
         public string sideNote;
         public string category;
         public string isDone;
 
-        public Entry(string id, string blob, string sideNote, string category, string isDone)
+        public Entry(string path, string sideNote, string category, string isDone)
         {
-            this.id = id;
-            this.blob = blob;
+            this.path = path;
             this.sideNote = sideNote;  
             this.category = category;
             this.isDone = isDone;

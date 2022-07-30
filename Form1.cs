@@ -13,12 +13,10 @@ namespace IdView
 {
     public partial class Form1 : Form
     {
-        private readonly string description = "Lorem impsum dolor sit amet ";
         static readonly string connectionString = "datasource=127.0.0.1;port=3306;username=root;password=;database=ideas;";
         static readonly string query = "SELECT * FROM ideas";
-        private string reading;
-
-        LinkedList<Entry> items = new LinkedList<Entry>();
+        static LinkedList<Entry> items = new LinkedList<Entry>();
+        public static Entry runner;
 
         public Form1()
         {
@@ -27,21 +25,19 @@ namespace IdView
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            descriptBox.Text = string.Concat(Enumerable.Repeat(description, 8));
-            categoryName.Text = description;
             Prepare();
+            Update(runner);
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            if (descriptBox.Text.Length != 1)
-            {
-                descriptBox.Text = descriptBox.Text.Substring(0, descriptBox.Text.Length / 2);
-            }            
+            runner = items.Find(runner).Previous.Value;
+            Update(runner);
         }
 
         private void button2_Click(object sender, EventArgs e)
-        {
-            descriptBox.Text = string.Concat(Enumerable.Repeat(descriptBox.Text, 2));
+        {            
+            runner = items.Find(runner).Next.Value;
+            Update(runner);
         }
 
         public void Prepare()
@@ -56,32 +52,43 @@ namespace IdView
                 dbConnection.Open();
                 // This one obviously is to read the db data
                 MySqlDataReader dbReader = dbCommand.ExecuteReader();
-                /* Must set row data into Entry struct, but how???
-                ** Entry entry = new Entry(rowindex(0), ..., rowindex(4));
-                ** items.AddLast(entry);
-                 */
-                while (dbReader.Read())
+                if (dbReader.HasRows)
                 {
-                    Entry entry = new Entry(
-                        dbReader.GetString(0),
-                        dbReader.GetString(1),
-                        dbReader.GetString(2),
-                        dbReader.GetString(3),
-                        dbReader.GetString(4)
-                        );
-                    items.AddLast(entry);
-                    Console.WriteLine(entry.id);
-                    Console.WriteLine(entry.sideNote);
-                    Console.WriteLine(entry.category);
-                    Console.WriteLine(entry.isDone + "\n\n");
+                    while (dbReader.Read())
+                    {
+                        Entry entry = new Entry(
+                            dbReader.GetString(0),
+                            dbReader.GetString(1),
+                            dbReader.GetString(2),
+                            dbReader.GetString(3),
+                            dbReader.GetString(4)
+                            );
+                        items.AddLast(entry);
+                    }
                 }
-                Console.WriteLine(items.Count);
                 dbConnection.Close();
+                runner = items.First.Value;
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.ToString());
             }
+        }
+
+        private void Update(Entry node)
+        {
+            ideaImage.ImageLocation = node.path;
+            descriptBox.Text = node.sideNote;
+            categoryName.Text = node.category;
+            if (node.isDone == "0")
+            {
+                isDone.Checked = false;
+            }
+            else
+            {
+                isDone.Checked = true;
+            }
+
         }
     }
 }

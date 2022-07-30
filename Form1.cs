@@ -57,7 +57,6 @@ namespace IdView
                     while (dbReader.Read())
                     {
                         Entry entry = new Entry(
-                            dbReader.GetString(0),
                             dbReader.GetString(1),
                             dbReader.GetString(2),
                             dbReader.GetString(3),

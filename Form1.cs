@@ -24,19 +24,22 @@ namespace IdView
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {
+        {            
             Prepare();
             Update(runner);
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            runner = items.Find(runner).Previous.Value;
+            // "< Previous"
+            runner = items.Find(runner).Previous?.Value ?? items.Last.Value;
             Update(runner);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {            
-            runner = items.Find(runner).Next.Value;
+            // "Next >"
+            runner = items.Find(runner).Next?.Value ?? items.First.Value;
             Update(runner);
         }
 
@@ -64,9 +67,9 @@ namespace IdView
                             );
                         items.AddLast(entry);
                     }
+                    runner = items.First.Value;
                 }
                 dbConnection.Close();
-                runner = items.First.Value;
             }
             catch (Exception e)
             {

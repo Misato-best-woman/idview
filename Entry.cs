@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IdView
 {
-    public struct Entry
+    public class Entry
     {        
         public string path;
         public string sideNote;
